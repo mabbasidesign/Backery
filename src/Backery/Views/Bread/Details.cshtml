@@ -1,0 +1,35 @@
+﻿@*@model Bread
+
+<div class="thumbnail">
+    <img  class="img-responsive" src="@Model.ImageUrl"/>
+    <div class="caption">
+        <h3 class="pull-right">@Model.Price</h3>
+        <h3>
+            <a href="#">@Model.Name</a>
+        </h3>
+        <h5>@Model.ShortDescription</h5>
+        <p>@Model.LongDescription</p>
+        <p class="bottom">
+            <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+               asp-route-pieId="@Model.BreadId">Add to cart</a>
+        </p>
+    </div>
+</div>*@
+
+@model Bread
+
+<div class="thumbnail">
+    <img alt="@Model.Name" src="@Model.ImageUrl">
+    <div class="caption-full">
+        <h3 class="pull-right">@Model.Price</h3>
+        <h3>
+            <a href="#">@Model.Name</a>
+        </h3>
+        <h4>@Model.ShortDescription</h4>
+        <p>@Model.LongDescription</p>
+        <p class="button">
+            <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+               asp-route-pieId="@Model.BreadId">Add to cart</a>
+        </p>
+    </div>
+</div>

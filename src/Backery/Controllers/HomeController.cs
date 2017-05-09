@@ -3,33 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Backery.Models;
+using Backery.ViewModels;
+
+// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Backery.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        // GET: /<controller>/
+        private readonly IBreadRepository _breadRepository;
+        public HomeController(IBreadRepository breadRepository)
         {
-            return View();
+            _breadRepository = breadRepository;
         }
 
-        public IActionResult About()
+        public ViewResult Index()
         {
-            ViewData["Message"] = "Your application description page.";
+            var Item = new HomeViewModel
+            {
+                BreadOfTheWeek = _breadRepository.BreadOfTheWeek,
+            };
 
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
+            return View(Item);
         }
     }
 }
